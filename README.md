@@ -94,4 +94,4 @@ The differencial expression train and test outputs will be in the folder `./data
 
 ### Full Example
 
-For a full example execution of the workflow, I left a bash file `MES-HDLS` with it.
+For a full example execution of the workflow, I left a bash file `MES-HDLS.sh` with it.
