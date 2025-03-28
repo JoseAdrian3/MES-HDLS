@@ -1,4 +1,3 @@
-library(caret)
 library(IlluminaHumanMethylationEPICanno.ilm10b4.hg19)
 library(biomaRt)
 

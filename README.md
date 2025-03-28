@@ -10,14 +10,29 @@ MES-HDLS has been evaluated using four datasets across ten different diseases, s
 
 ![MES-HDLS Workflow](./images/MES-HDLS-Pipeline.png)
 
+## Requirements
+
+MES-HDLS requires dependencies for both R and Python. Please ensure you have the following libraries installed:
+
+### R Libraries
+
+- **dplyr**
+- **IlluminaHumanMethylationEPICanno.ilm10b4.hg19**
+- **biomaRt**
+
+### Python Libraries
+
+- **pandas**
+- **numpy**
+- **cupy**
 
 ## How to Use MES-HDLS
 
-Everything necessary to exec MES-HDLS is in the `code` folder. As an example, the dataset `LBDfcFilteredMyNorm.csv` and its clinical data `LBDfcSamplesheet.csv` have been provided. The clinic data is essential for performing differential expression analysis.
+Everything necessary to exec MES-HDLS is in the `code` folder. As an example, the train and test datasets from `LBDfcFilteredMyNorm.csv` and its clinical data `LBDfcSamplesheet.csv` have been provided. The clinic data is essential for performing differential expression analysis.
 
 ### Split into Train and Test Sets (Optional)
 
-If you wish to split your dataset into train and test subsets, a Jupyter notebook named `train_test_split.ipynb` is available. For my example, simply execute the cell following the comment marked `LBDfc`.
+If you wish to split your own dataset into train and test subsets, a Jupyter notebook named `train_test_split.ipynb` is available. For my example, I simply executed the cell following the comment marked `LBDfc`.
 
 ### Chromosome-Based Split
 
@@ -74,6 +89,8 @@ Adjust the `contrasts` variable accordingly:
 ```R
 contrasts <- c("DLBvsCTRL", "PDvsCTRL", "PDDvsCTRL", "neurovsCTRL")
 ```
+
+The differencial expression train and test outputs will be in the folder `./data/loci`.
 
 ### Full Example
 

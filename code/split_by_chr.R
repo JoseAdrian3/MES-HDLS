@@ -1,4 +1,3 @@
-library(dplyr)
 library(IlluminaHumanMethylationEPICanno.ilm10b4.hg19)
 
 cat("Splitting by chrs...\n")

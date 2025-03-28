@@ -1,5 +1,3 @@
-library(dplyr)
-
 cat("Performing differencial expression analysis for every loci...\n")
 
 # Command-line
