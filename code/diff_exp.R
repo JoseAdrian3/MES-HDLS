@@ -16,7 +16,7 @@ test_df <- t(test_df)
 sheet_df <- read.csv(sheet_path, row.names = 1)
 
 # Main directory containing loci data.
-data_dir <- "./data/loci"
+data_dir <- "../data/loci"
 
 # Load train datasets
 promoter_train <- read.csv(file.path(data_dir, "promoter", "promoter_train.csv"), row.names = 1)

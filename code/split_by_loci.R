@@ -16,7 +16,7 @@ train_path <- args[1]
 
 # Data load
 train_df <- read.csv(train_path, row.names = 1)
-selected_probes <- read.csv("./data/final_iteration/chr1_chr22_chr2_chr21_chr3_chr20_chr4_chr19_chr5_chr18_chr6_chr17_chr7_chr16_chr8_chr15_chr9_chr14_chr10_chr13_chr11_chr12/results/selected_probes.csv")$probe
+selected_probes <- read.csv("../data/final_iteration/chr1_chr22_chr2_chr21_chr3_chr20_chr4_chr19_chr5_chr18_chr6_chr17_chr7_chr16_chr8_chr15_chr9_chr14_chr10_chr13_chr11_chr12/results/selected_probes.csv")$probe
 
 # Filter data by selected probes
 train_df <- train_df[rownames(train_df) %in% selected_probes, ]
@@ -79,7 +79,7 @@ lista_subsets <- lapply(unique_values, function(valor) {
 names(lista_subsets) <- unique_values
 
 # Directorio principal para loci
-output_dir <- "./data/loci"
+output_dir <- "../data/loci"
 if (!dir.exists(output_dir)) {
   dir.create(output_dir, recursive = TRUE)
 }
