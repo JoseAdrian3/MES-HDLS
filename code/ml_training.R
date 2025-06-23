@@ -9,7 +9,7 @@ library(dplyr)
 library(ranger)
 
 # ML training function
-make_model_row <- function(region_dir, comparison_dir, root_dir,
+ml_training <- function(region_dir, comparison_dir, root_dir,
                            threshold = 0.5, type = "svm_radial",
                            always_split = character()) {
   
@@ -55,6 +55,8 @@ make_model_row <- function(region_dir, comparison_dir, root_dir,
     test_df$Sample_Group  <- ifelse(grepl(paste0("^", positive_label), rownames(test_df)),
                                     positive_label, "CTRL")
   }
+
+  if (is.null(train_df) || is.null(test_df)) return(NULL)
 
   levels_vec <- c("CTRL", positive_label)
   train_df$Sample_Group <- factor(train_df$Sample_Group, levels = levels_vec)
@@ -104,6 +106,8 @@ make_model_row <- function(region_dir, comparison_dir, root_dir,
     return(NULL)
   })
 
+  if (is.null(model_fit)) return(NULL)
+
   # Predictions
   pred_prob  <- predict(model_fit, newdata = test_df, type = "prob")
   pred_class <- ifelse(pred_prob[[positive_label]] > threshold, positive_label, "CTRL")
@@ -137,7 +141,7 @@ for (region in regions) {
     if (!grepl("vsCTRL$", comp)) next
     message("Processing: ", region, ";", comp)
 
-    row_res <- make_model_row(region, comp, root_dir,
+    row_res <- ml_training(region, comp, root_dir,
                               threshold    = prob_threshold,
                               type         = model_type,
                               always_split = rf_always_split)
